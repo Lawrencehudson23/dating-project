@@ -14,7 +14,7 @@
 <body>
 <div id="layout">
   <div id="header">
-    <div class="logo"><img src="images/logo.gif" alt="" /></div>
+    <div class="logo"><img src='{%static "images/logo.gif"%}' alt="" /></div>
     <div class="form_container">
       <h4>Intimate Search</h4>
       <div class="search">
@@ -45,6 +45,9 @@
             <div class="search_column_2">
               <select class="date">
                 <option>Date</option>
+                <option>Just Friend</option>
+                <option>Short-term relationship</option>
+                <option>Long-term relationship</option>
               </select>
             </div>
           </div>
@@ -77,7 +80,7 @@
           <div class="search_row last">
             <div class="search_column_1">&nbsp;</div>
             <div class="search_column_2">
-              <input type="image" src="images/search_btn.gif" class="search_btn"/>
+              <input type="image" src='{%static "images/search_btn.gif"%}' class="search_btn"/>
             </div>
           </div>
           </fieldset>
@@ -91,24 +94,24 @@
     </div>
     <div class="links">
       <div class="free_registration">
-        <h3><a class="current" href="#"><img src="images/1.gif" alt="" />100% FREE REGISTRATION</a></h3>
+        <h3><a class="current" href="#"><img src='{%static "images/1.gif"%}' alt="" />100% FREE REGISTRATION</a></h3>
       </div>
       <div class="free_profile">
-        <h3><a href="#"><img src="images/2.gif" alt="" />LOG IN</a></h3>
+        <h3><a href="#"><img src='{%static "images/2.gif"%}' alt="" />LOG IN</a></h3>
       </div>
       <div class="life_partner">
-        <h3><a href="#"><img src="images/3.gif" alt="" />SEARCH LIFE PARTNER</a></h3>
+        <h3><a href="#"><img src='{%static "images/3.gif"%}' alt="" />SEARCH LIFE PARTNER</a></h3>
       </div>
     </div>
     <div id="menu">
       <ul>
         <li class="first"><a class="current" href="#">Home</a></li>
-        <li><a href="about_us.html">about us</a></li>
-        <li><a href="privacy.html">privacy</a></li>
-        <li><a href="projects.html">projects</a></li>
-        <li><a href="services.html">services</a></li>
-        <li><a href="support.html">support</a></li>
-        <li><a href="contact_us.html">contact Us</a></li>
+        <li><a href="about_us.html">About us</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="support.html">Support</a></li>
+        <li><a href="contact_us.html">Contact Us</a></li>
       </ul>
     </div>
   </div>
@@ -124,7 +127,7 @@
               <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Duis cursus tortor. Nunc consectetuer diam ac odio. Pellentesque vel mauris sit amet urna malesuada ornare. Curabitur venenatis est eget arcu. Donec vestibulum. Proin rutrum. Morbi commodo fringilla orci.</p>
               <p> Vivamus hendrerit aliquam quam. Curabitur placerat eros vitae libero. Fusce sagittis commodo purus. Cras orci. Quisque at justo. Quisque ullamcorper feugiat ligula. </p>
             </div>
-            <div class="box_2"><img src="images/pic_1.gif" alt="" /></div>
+            <div class="box_2"><img src='{%static "images/pic_1.gif"%}' alt="" /></div>
             <div class="box_3">
               <h2>Top 5 Dating Tips</h2>
               <ul>
@@ -148,7 +151,7 @@
               <h4><a href="#">next </a> | <a href="#">prev</a></h4>
             </div>
             <div class="detail_box">
-              <div class="column"><span class="photo"><a href="#"><img src="images/pic_2.gif" alt="" /></a></span>
+              <div class="column"><span class="photo"><a href="#"><img src='{%static "images/pic_2.gif"%}' alt="" /></a></span>
                 <div class="self_detail">
                   <p>Name: <span>Minisha</span><br />
                     Age: <span>22 yrs.</span><br />
@@ -159,8 +162,8 @@
                     Waist: <span>26</span><br />
                     Hair: <span>Black</span> </p>
                 </div>
-                <a href="#"><img src="images/more_btn.gif" alt="" class="more" /></a> </div>
-              <div class="column"> <span class="photo"><a href="#"><img src="images/pic_3.gif" alt="" /></a></span>
+                <a href="#"><img src='{%static "images/more_btn.gif"%}' alt="" class="more" /></a> </div>
+              <div class="column"> <span class="photo"><a href="#"><img src='{%static "images/pic_3.gif"%}' alt="" /></a></span>
                 <div class="self_detail">
                   <p>Name: <span>Richa Stone</span><br />
                     Age: <span>25 yrs.</span><br />
@@ -171,8 +174,8 @@
                     Waist: <span>24</span><br />
                     Hair: <span>Black</span> </p>
                 </div>
-                <a href="#"><img src="images/more_btn.gif" alt="" class="more" /></a> </div>
-              <div class="column"> <span class="photo"><a href="#"><img src="images/pic_4.gif" alt="" /></a></span>
+                <a href="#"><img src='{%static "images/more_btn.gif"%}' alt="" class="more" /></a> </div>
+              <div class="column"> <span class="photo"><a href="#"><img src='{%static "images/pic_4.gif"%}' alt="" /></a></span>
                 <div class="self_detail">
                   <p>Name: <span>Richa Stone</span><br />
                     Age: <span>25 yrs.</span><br />
@@ -183,8 +186,8 @@
                     Waist: <span>24</span><br />
                     Hair: <span>Golden</span> </p>
                 </div>
-                <a href="#"><img src="images/more_btn.gif" alt="" class="more" /></a> </div>
-              <div class="column last"> <span class="photo"><a href="#"><img src="images/pic_5.gif" alt="" /></a></span>
+                <a href="#"><img src='{%static "images/more_btn.gif"%}' alt="" class="more" /></a> </div>
+              <div class="column last"> <span class="photo"><a href="#"><img src='{%static "images/pic_5.gif"%}' alt="" /></a></span>
                 <div class="self_detail">
                   <p>Name: <span>Wang Lee</span><br />
                     Age: <span>25 yrs.</span><br />
@@ -195,7 +198,7 @@
                     Waist: <span>24</span><br />
                     Hair: <span>Golden</span> </p>
                 </div>
-                <a href="#"><img src="images/more_btn.gif" alt="" class="more" /></a> </div>
+                <a href="#"><img src='{%static "images/more_btn.gif"%}' alt="" class="more" /></a> </div>
             </div>
           </div>
         </div>
