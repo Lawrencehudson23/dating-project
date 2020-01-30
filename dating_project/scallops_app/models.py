@@ -1,4 +1,32 @@
 from django.db import models
+import re
+from datetime import datetime
+
+class UserManager(models.Manager):
+    def user_validator(self, post_Data):
+        errors = {}
+
+        if len(post_Data["first_name"]) < 2:
+            errors["first_name"] = "First name must be longer than two letters"
+        elif post_Data["first_name"].isalpha() == False:
+            errors["first_name"] = "First name can only contain letters"
+
+        if len(post_Data["last_name"]) < 2:
+            errors["last_name"] = "Last name must be longer than two letters"
+        elif post_Data["last_name"].isalpha() == False:
+            errors["last_name"] = "Last name can only contain letters"
+        
+        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+        if not EMAIL_REGEX.match(post_Data['email']):          
+            errors['email'] = "Invalid email address!"
+        
+        if len(post_Data["password"]) < 8:
+            errors['password'] = "Password must have at least 8 characters"
+
+        if post_Data["password"] != post_Data["pass_confirm"]:
+            errors['pass_confirm'] = "Passwords do not match!"
+        
+        return errors
 
 # Create your models here.
 class User(models.Model):
@@ -6,12 +34,14 @@ class User(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
-    username = models.CharField(max_length=200)
-    birthday = models.DateField()
+    birthday = models.DateField(null=True, auto_now=False)
     gender = models.CharField(max_length=200)
     city = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    objects = UserManager()
+
     def __str__(self):
         return "<User: {} {}>".format(self.first_name, self.last_name)
 
