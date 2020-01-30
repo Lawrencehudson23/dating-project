@@ -171,7 +171,7 @@ img.service-img{float:left;
 #footer{float:left; width:971px; padding:30px 0 60px 0}
 #footer .footer_link{float:left; width:971px; padding:13px 0 0 0;}
 #footer .footer_link ul{width:971px; text-align:center; list-style:none; margin:0; padding:0 0 22px 0}
-#footer .footer_link li{width:971px; color:#d2d2d2; background:url(../images/footer_menu_border.gif) no-repeat 0 2px; display:inline; padding:0 5px 0 9px}
+#footer .footer_link li{ color:#d2d2d2; background:url(../images/footer_menu_border.gif) no-repeat 0 2px; display:inline; padding:0 5px 0 9px}
 #footer .footer_link li.first{background:none; padding:0 5px 0 5px}
 #footer .footer_link li a{color:#d2d2d2; text-decoration:none}
 #footer .footer_link li a:hover{color:#d2d2d2; text-decoration:underline}
