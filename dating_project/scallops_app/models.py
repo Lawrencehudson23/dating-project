@@ -35,8 +35,8 @@ class User(models.Model):
     email = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
     birthday = models.DateField(null=True, auto_now=False)
-    gender = models.CharField(max_length=200)
-    city = models.CharField(max_length=255)
+    gender = models.CharField(null=True, max_length=200)
+    city = models.CharField(null=True, max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
