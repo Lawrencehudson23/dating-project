@@ -1,8 +1,9 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
 
 {% block title%}{% endblock %}
 
 {% block content %}
+{% load static %}
 
   <div id="body_container">
     <div class="profile_container">
@@ -71,7 +72,7 @@
                   <p>100 Lorem Ipsum Dolor Sit<br />
                     88-99 Sit Amet, Lorem<br />
                     USA</p>
-                  <p> <span><img src="images/ico-phone.png" alt="" width="20" height="16" hspace="2" align="middle" /> Phone:</span> (888) 123 456 789<br />
+                  <p> <span><img src="{%static 'images/ico-phone.png'%}" alt="" width="20" height="16" hspace="2" align="middle" /> Phone:</span> (888) 123 456 789<br />
                     <span><img src="images/ico-fax.png" alt="" width="20" height="16" hspace="2" align="middle" /> Fax:</span> (888) 987 654 321<br />
                     <span><img src="images/ico-website.png" alt="" width="20" height="16" hspace="2" align="middle" /> Website:</span> <a href="#">www.mycompany.com</a><br />
                     <span><img src="images/ico-email.png" alt="" width="20" height="16" hspace="2" align="middle" /> Email:</span> <a href="#">info@mycompany.com</a><br />
