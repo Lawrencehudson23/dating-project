@@ -6,13 +6,16 @@ import bcrypt
 
 # Create your views here.
 def index(request):
-    return render(request,'index.html')
-def about_us(request):
+    return render(request,'base.html')
+def display_about_us(request):
     return render(request,'about_us.html')
-def registration(request):
+def display_contact_us(request):
+    return render(request,'contact_us.html')
+def display_registration(request):
     return render(request, 'registration.html')
+<<<<<<< HEAD
 
-def register(request):
+def process_registration(request):
 
     errors = User.objects.user_validator(request.POST)
     
@@ -20,7 +23,7 @@ def register(request):
         for key, value in errors.items():
             messages.error(request, value)
 
-        return redirect('/registration')
+        return redirect('/registration/')
     else:
         password = request.POST["password"]
         pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode() 
@@ -30,8 +33,6 @@ def register(request):
         request.session['user_first'] = user.first_name
         return redirect('/')
 
-def login(request):
-    return render(request, 'login.html')
 
 def process_login(request):
     errors = {}
@@ -62,3 +63,11 @@ def process_login(request):
     else:
         messages.error(request,"User does not exist")
     return redirect("/login/")
+=======
+def display_login(request):
+    return render(request, 'login.html')
+def display_message(request):
+    return render(request, 'message.html')
+def display_profile(request):
+    return render(request, 'profile.html')
+>>>>>>> ad9388dd7ab3fc548549e80d3e939e1963e1c88f

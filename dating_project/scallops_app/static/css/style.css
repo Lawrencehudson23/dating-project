@@ -16,7 +16,7 @@ body {
   font-family: "Muli-Regular";
   color: #666;
   font-size: 13px;
-  margin: 0; }
+  margin: 0;}
 
 input, textarea, select, button {
   font-family: "Muli-Regular";
@@ -46,6 +46,15 @@ a:hover {
   display: flex;
   align-items: center; }
 
+
+  .container {
+    display: flex;
+    min-width: 850px;
+    min-height: 1150px;
+    margin: auto;
+    padding-top: 68px;
+    padding-bottom: 48px;
+    background: url("../images/bg-registration-form-2.jpg"); }
 .inner {
   min-width: 850px;
   margin: auto;
