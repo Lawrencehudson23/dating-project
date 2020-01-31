@@ -3,6 +3,8 @@ from .models import *
 from django.contrib import messages
 import re
 import bcrypt
+import random
+from django.http import JsonResponse
 
 # Create your views here.
 def index(request):
@@ -123,3 +125,31 @@ def like(request):
 def dislike(request):
     pass
     return redirect('/1on1/')
+    return render(request, 'profile.html')
+
+def display_game(request):
+    random_id = random.randint(1,44)
+
+    try:
+        Game.objects.get(id=random_id)
+        question=Game.objects.get(id=random_id)
+        print("used try")
+    except:
+        random_id = random.randint(22,44)
+        question = Game.objects.get(id=random_id)
+        print("used except")
+    
+    logged_user = User.objects.get(id=request.session["user_id"])
+
+    context={
+        "question":question,
+        "logged_user":logged_user,
+
+    }
+    return render(request,'game.html', context)
+
+def process_game(request):
+    request.session["answer_id"] = request.POST["option"]
+
+    return redirect('/game/')
+

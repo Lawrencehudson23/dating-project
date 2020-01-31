@@ -15,4 +15,6 @@ urlpatterns = [
     path('1on1/', views.display_1on1),
     path('dislike/', views.dislike),
     path('like/', views.like),
+    path('game/', views.display_game),
+    path('process/game/', views.process_game),
 ]

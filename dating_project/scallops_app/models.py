@@ -67,3 +67,18 @@ class Match(models.Model):
 #     summary = models.TextField()
 #     interest = models.TextField()
 #     goals = models.TextField()
+# class Profile(models.Model):
+#     # image = models.ImageField(width_field=200px, height_field=400px)
+#     summary = models.TextField()
+#     interest = models.TextField()
+#     goals = models.TextField()
+
+class Game(models.Model):
+    option1 = models.CharField(max_length=1000)
+    option2 = models.CharField(max_length=1000)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+
+
+
+
