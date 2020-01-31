@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title%}{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="one">
+    <form action="/next/" method="post">
+        <fieldset>
+    {% csrf_token %}
+    <button>pass</button>
+    </form>
+    <img src='{%static "images/pic_2.gif"%}' alt=""><br>
+    <label for="/like/">Lora 22 yr old los angeles</label>
+    <form action="" method="post">
+    {% csrf_token %}
+    <button>like</button>
+</form>
+</fieldset>
+
+    <div class="form-group">
+    <div class="input-group mb-3">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="inputGroupFile02">
+        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+      </div>
+      <div class="input-group-append">
+        <span class="input-group-text" id="">Upload</span>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

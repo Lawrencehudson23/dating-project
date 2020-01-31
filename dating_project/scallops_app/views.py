@@ -6,16 +6,34 @@ import bcrypt
 
 # Create your views here.
 def index(request):
+    if "user_id" not in request.session:
+        return redirect("/login/")
+
     context = {
         "user" : User.objects.get(id=request.session["user_id"]),
         "all_users" : User.objects.exclude(id=request.session["user_id"]),
     }
     return render(request,'base.html', context)
 def display_about_us(request):
-    return render(request,'about_us.html')
+    if "user_id" not in request.session:
+        return redirect("/login/")
+
+    context = {
+        "user" : User.objects.get(id=request.session["user_id"]),
+        "all_users" : User.objects.exclude(id=request.session["user_id"]),
+    }
+    return render(request,'about_us.html',context)
 def display_contact_us(request):
-    return render(request,'contact_us.html')
+    if "user_id" not in request.session:
+        return redirect("/login/")
+
+    context = {
+        "user" : User.objects.get(id=request.session["user_id"]),
+        "all_users" : User.objects.exclude(id=request.session["user_id"]),
+    }
+    return render(request,'contact_us.html',context)
 def display_registration(request):
+
     return render(request, 'registration.html')
 
 def process_registration(request):
@@ -66,9 +84,42 @@ def process_login(request):
     else:
         messages.error(request,"User does not exist")
     return redirect("/login/")
+def process_logout(request):
+    request.session.delete()
+    return redirect('/login/')
 def display_login(request):
+
     return render(request, 'login.html')
 def display_message(request):
-    return render(request, 'message.html')
+    if "user_id" not in request.session:
+        return redirect("/login/")
+
+    context = {
+        "user" : User.objects.get(id=request.session["user_id"]),
+        "all_users" : User.objects.exclude(id=request.session["user_id"]),
+    }
+    return render(request, 'message.html',context)
 def display_profile(request):
-    return render(request, 'profile.html')
+    if "user_id" not in request.session:
+        return redirect("/login/")
+
+    context = {
+        "user" : User.objects.get(id=request.session["user_id"]),
+        "all_users" : User.objects.exclude(id=request.session["user_id"]),
+    }
+    return render(request, 'profile.html',context)
+def display_1on1(request):
+    if "user_id" not in request.session:
+        return redirect("/login/")
+
+    context = {
+        "user" : User.objects.get(id=request.session["user_id"]),
+        "all_users" : User.objects.exclude(id=request.session["user_id"]),
+    }
+    return render(request, '1on1.html',context)
+def like(request):
+    pass
+    return redirect('/1on1/')
+def dislike(request):
+    pass
+    return redirect('/1on1/')
