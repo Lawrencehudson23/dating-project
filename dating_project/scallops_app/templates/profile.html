@@ -1,50 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <h1>User Profile</h1>
-    <img src="" alt="User Image">
-    <p>Name</p>
-    <p>Age</p>
-    <p>Hobby</p>
-    <p>Summary</p>
-    <p>Gender</p>
+{% extends "base.html" %}
 
-    <h2>User's Likes</h2>
-    <table>
-        <thead>
-            <th>Details</th>      
-        </thead>
-        <tbody>
-            <tr>
-                <td>Username
-                    <a href="/profile/username"><img src="" alt="Liked person"></a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+{% block title%}{% endblock %}
 
-    <h2>Lets date</h2>
-    <table>
-        <thead>
-            <th>Details</th>
-            <th>Actions</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Username
-                        <a href="/profile/username"><img src="" alt="To date person"></a>
-                </td>
-                <td><a href="/message/userid">Message </a></td>
-                <td><a href="/game/userid">Game</a></td>
-            </tr>
-        </tbody>
+{% block content %}
+{% load static %}
+    <h1>Hello {{ user.first_name }}</h1>
+    <img src="{{ uploaded_file_url }}" alt="">
+        <p>Gender: {{ user.gender }} </p>
+        <p>City: {{ user.city }}</p>
+        <p>DOB: {{ user.birthday }}</p>
+        <p>Summary: {{ profile_info.summary}}</p>
+        <div>
 
-    </table>
-</body>
-</html>
+        </div>
+        <p>Interests: {{ profile_info.interests}}</p>
+        <div>
+
+        </div>
+        <p>Goals:{{ profile_info.goals }}</p>
+        <div>
+
+        </div>
+
+        <button><a href="/edit_profile"> Edit your Profile </a></button>
+    
+{% endblock %}

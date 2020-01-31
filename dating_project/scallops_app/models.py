@@ -1,4 +1,32 @@
 from django.db import models
+import re
+from datetime import datetime
+
+class UserManager(models.Manager):
+    def user_validator(self, post_Data):
+        errors = {}
+
+        if len(post_Data["first_name"]) < 2:
+            errors["first_name"] = "First name must be longer than two letters"
+        elif post_Data["first_name"].isalpha() == False:
+            errors["first_name"] = "First name can only contain letters"
+
+        if len(post_Data["last_name"]) < 2:
+            errors["last_name"] = "Last name must be longer than two letters"
+        elif post_Data["last_name"].isalpha() == False:
+            errors["last_name"] = "Last name can only contain letters"
+        
+        EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
+        if not EMAIL_REGEX.match(post_Data['email']):          
+            errors['email'] = "Invalid email address!"
+        
+        if len(post_Data["password"]) < 8:
+            errors['password'] = "Password must have at least 8 characters"
+
+        if post_Data["password"] != post_Data["pass_confirm"]:
+            errors['pass_confirm'] = "Passwords do not match!"
+        
+        return errors
 
 # Create your models here.
 class User(models.Model):
@@ -6,12 +34,14 @@ class User(models.Model):
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=200)
     password = models.CharField(max_length=200)
-    username = models.CharField(max_length=200)
-    birthday = models.DateField()
-    gender = models.CharField(max_length=200)
-    city = models.CharField(max_length=255)
+    birthday = models.DateField(null=True, auto_now=False)
+    gender = models.CharField(null=True, max_length=200)
+    city = models.CharField(null=True, max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    objects = UserManager()
+
     def __str__(self):
         return "<User: {} {}>".format(self.first_name, self.last_name)
 
@@ -30,12 +60,19 @@ class Match(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
 #creating model for messaging
-class Message(models.Model):
-    sender = models.ForeignKey(User, related_name= 'send', on_delete=models.CASCADE)
-    receiver = models.ForeignKey(User, related_name= 'receive', on_delete=models.CASCADE)
-    r_msg = models.TextField()
-    sender_msg = models.TextField()
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
+# class Message(models.Model):
+#     sender = models.ForeignKey(User, related_name= 'send', on_delete=models.CASCADE)
+#     receiver = models.ForeignKey(User, related_name= 'receive', on_delete=models.CASCADE)
+#     r_msg = models.TextField()
+#     sender_msg = models.TextField()
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
 
 
+class Profile(models.Model):
+    # image = models.ImageField(default = 'static/images/default.png')
+    user = models.OneToOneField(User, related_name='my_profile', on_delete=models.CASCADE)
+    summary = models.TextField(default = 'Nothing to display')
+    interest = models.TextField(default = 'Nothing to display')
+    goals = models.TextField(default = 'Nothing to display')
+    updated_at = models.DateTimeField(auto_now_add=True)
