@@ -11,4 +11,6 @@ urlpatterns = [
     path('login/', views.display_login),
     path('message/', views.display_message),
     path('profile/', views.display_profile),
+    path('game/', views.display_game),
+    path('process/game/', views.process_game),
 ]
