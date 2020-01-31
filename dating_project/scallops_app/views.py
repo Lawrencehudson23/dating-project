@@ -3,23 +3,47 @@ from .models import *
 from django.contrib import messages
 import re
 import bcrypt
+<<<<<<< HEAD
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
+=======
+import random
+from django.http import JsonResponse
+>>>>>>> bc1f3d038998ed1af356d2be65ae9e0c3a7c16ca
 
 # Create your views here.
 def index(request):
     if "user_id" not in request.session:
         return redirect("/login/")
+<<<<<<< HEAD
+=======
+
+>>>>>>> bc1f3d038998ed1af356d2be65ae9e0c3a7c16ca
     context = {
         "user" : User.objects.get(id=request.session["user_id"]),
         "all_users" : User.objects.exclude(id=request.session["user_id"]),
     }
     return render(request,'base.html', context)
 def display_about_us(request):
-    return render(request,'about_us.html')
+    if "user_id" not in request.session:
+        return redirect("/login/")
+
+    context = {
+        "user" : User.objects.get(id=request.session["user_id"]),
+        "all_users" : User.objects.exclude(id=request.session["user_id"]),
+    }
+    return render(request,'about_us.html',context)
 def display_contact_us(request):
-    return render(request,'contact_us.html')
+    if "user_id" not in request.session:
+        return redirect("/login/")
+
+    context = {
+        "user" : User.objects.get(id=request.session["user_id"]),
+        "all_users" : User.objects.exclude(id=request.session["user_id"]),
+    }
+    return render(request,'contact_us.html',context)
 def display_registration(request):
+
     return render(request, 'registration.html')
 
 def process_registration(request):
@@ -70,14 +94,53 @@ def process_login(request):
     else:
         messages.error(request,"User does not exist")
     return redirect("/login/")
+def process_logout(request):
+    request.session.delete()
+    return redirect('/login/')
 def display_login(request):
+
     return render(request, 'login.html')
 def display_message(request):
+<<<<<<< HEAD
     return render(request, 'message.html')
 
+=======
+    if "user_id" not in request.session:
+        return redirect("/login/")
+
+    context = {
+        "user" : User.objects.get(id=request.session["user_id"]),
+        "all_users" : User.objects.exclude(id=request.session["user_id"]),
+    }
+    return render(request, 'message.html',context)
+>>>>>>> bc1f3d038998ed1af356d2be65ae9e0c3a7c16ca
 def display_profile(request):
+    if "user_id" not in request.session:
+        return redirect("/login/")
+
+    context = {
+        "user" : User.objects.get(id=request.session["user_id"]),
+        "all_users" : User.objects.exclude(id=request.session["user_id"]),
+    }
+    return render(request, 'profile.html',context)
+def display_1on1(request):
+    if "user_id" not in request.session:
+        return redirect("/login/")
+
+    context = {
+        "user" : User.objects.get(id=request.session["user_id"]),
+        "all_users" : User.objects.exclude(id=request.session["user_id"]),
+    }
+    return render(request, '1on1.html',context)
+def like(request):
+    pass
+    return redirect('/1on1/')
+def dislike(request):
+    pass
+    return redirect('/1on1/')
     return render(request, 'profile.html')
 
+<<<<<<< HEAD
 def display_edit_profile(request):
     return render(request, 'edit_profile.html')
 
@@ -97,3 +160,31 @@ def process_profile(request):
          'profile_info' : Profile.objects.get(id =  request.session['prof_id']),
     }    
     return  render (request, 'profile.html', context)
+=======
+def display_game(request):
+    random_id = random.randint(1,44)
+
+    try:
+        Game.objects.get(id=random_id)
+        question=Game.objects.get(id=random_id)
+        print("used try")
+    except:
+        random_id = random.randint(22,44)
+        question = Game.objects.get(id=random_id)
+        print("used except")
+    
+    logged_user = User.objects.get(id=request.session["user_id"])
+
+    context={
+        "question":question,
+        "logged_user":logged_user,
+
+    }
+    return render(request,'game.html', context)
+
+def process_game(request):
+    request.session["answer_id"] = request.POST["option"]
+
+    return redirect('/game/')
+
+>>>>>>> bc1f3d038998ed1af356d2be65ae9e0c3a7c16ca
