@@ -9,4 +9,5 @@ urlpatterns = [
     path('login/', views.display_login),
     path('message/', views.display_message),
     path('profile/', views.display_profile),
+    path('1on1/', views.display_1on1),
 ]

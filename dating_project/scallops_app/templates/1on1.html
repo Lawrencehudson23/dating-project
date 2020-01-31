@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title%}{% endblock %}
+{% load static %}
+ <h1>nihaoma</h1>
+<form action="" method="POST">
+    {% csrf_token %}
+   <img src="" alt=""> 
+   <button class="btn btn-danger">Pass</button>
+   <button class="btn btn-warning">Like</button>
+   <label for="">My summary</label>
+</form>
+{% block content %}
+{% endblock %}

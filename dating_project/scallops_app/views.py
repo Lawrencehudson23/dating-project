@@ -15,3 +15,5 @@ def display_message(request):
     return render(request, 'message.html')
 def display_profile(request):
     return render(request, 'profile.html')
+def display_1on1(request):
+    return render(request, '1on1.html')

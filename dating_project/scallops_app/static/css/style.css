@@ -36,6 +36,9 @@ ul {
 a:hover {
   text-decoration: none; }
 
+main{
+  background-color: #81d8d0;
+}
 :focus {
   outline: none; }
 
