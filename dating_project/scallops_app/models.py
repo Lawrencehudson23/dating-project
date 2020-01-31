@@ -48,9 +48,6 @@ class User(models.Model):
     def __repr__(self):
        return self.__str__()
 
-
-
-
 class Like(models.Model):
     likes = models.ForeignKey(User, related_name="likes", on_delete=models.CASCADE)
     liked_by = models.ForeignKey(User, related_name="liked_by", on_delete=models.CASCADE)
@@ -62,11 +59,33 @@ class Match(models.Model):
     user2 = models.ForeignKey(User, related_name="match2", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
+#creating model for messaging
+# class Message(models.Model):
+#     sender = models.ForeignKey(User, related_name= 'send', on_delete=models.CASCADE)
+#     receiver = models.ForeignKey(User, related_name= 'receive', on_delete=models.CASCADE)
+#     r_msg = models.TextField()
+#     sender_msg = models.TextField()
+#     created_at = models.DateTimeField(auto_now_add=True)
+#     updated_at = models.DateTimeField(auto_now=True)
+
+
 class Profile(models.Model):
-    # image = models.ImageField(width_field=200px, height_field=400px)
-    summary = models.TextField()
-    interest = models.TextField()
-    goals = models.TextField()
+    # image = models.ImageField(default = 'static/images/default.png')
+    user = models.OneToOneField(User, related_name='my_profile', on_delete=models.CASCADE)
+    summary = models.TextField(default = 'Nothing to display')
+    interest = models.TextField(default = 'Nothing to display')
+    goals = models.TextField(default = 'Nothing to display')
+    updated_at = models.DateTimeField(auto_now_add=True)
+# class Profile(models.Model):
+#     image = models.ImageField(width_field=200px, height_field=400px)
+#     summary = models.TextField()
+#     interest = models.TextField()
+#     goals = models.TextField()
+# class Profile(models.Model):
+#     # image = models.ImageField(width_field=200px, height_field=400px)
+#     summary = models.TextField()
+#     interest = models.TextField()
+#     goals = models.TextField()
 
 class Game(models.Model):
     option1 = models.CharField(max_length=1000)
