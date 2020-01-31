@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title%}{% endblock %}
+{% load static %}
+
+{% block content %}
+
+
+{% for user in all_users %}
+<div class="one">
+    <form action="/next/" method="post">
+        <fieldset>
+    {% csrf_token %}
+    <button>pass</button>
+    </form>
+    <img src='{%static "images/pic_2.gif"%}' alt=""><br>
+    <label for="/like/">{{ user.first_name }} 22 yr old {{ user.city }}</label>
+
+    <form action="/ajax/like" method="post">
+    {% csrf_token %}
+    <button><input type="submit" value="LIKE"></button>
+</form>
+</fieldset>
+</div>
+{% endfor %}
+
+
+    <!-- <div class="form-group">
+    <div class="input-group mb-3">
+      <div class="custom-file">
+        <input type="file" class="custom-file-input" id="inputGroupFile02">
+        <label class="custom-file-label" for="inputGroupFile02">Choose file</label>
+      </div>
+      <div class="input-group-append">
+        <span class="input-group-text" id="">Upload</span>
+      </div>
+    </div>
+  </div>
+</div> -->
+{% endblock %}
+
+
+<script>
+    $('form').submit(function(e){
+    e.preventDefault()
+    console.log($(this).serialize())
+    $.ajax({
+        url: '/ajax/like/',
+        method: 'POST',
+        data: $(this).serialize(),
+        success: function(serverResponse){
+        $('.answer').html(serverResponse)
+        console.log("Received this from server: ", serverResponse)
+    }
+  })
+})
+
+  </script>

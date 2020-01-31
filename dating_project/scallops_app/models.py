@@ -73,6 +73,13 @@ class Game(models.Model):
     option2 = models.CharField(max_length=1000)
     created_at = models.DateTimeField(auto_now_add=True)
 
+class Message(models.Model):
+    message = models.TextField()
+    user = models.ForeignKey(User, related_name="messages", on_delete=models.CASCADE)
+    match = models.ForeignKey(Match, related_name="messages", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add = True)
+    updated_at = models.DateTimeField(auto_now = True)
+
 
 
 
