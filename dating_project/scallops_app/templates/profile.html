@@ -3,9 +3,10 @@
 {% block title%}{% endblock %}
 
 {% block content %}
-{% load static %}
+{% load static %} 
     <h1>Hello {{ user.first_name }}</h1>
     <img src="{{ uploaded_file_url }}" alt="">
+        <h2>{{ uploaded_file_url }}</h2>
         <p>Gender: {{ user.gender }} </p>
         <p>City: {{ user.city }}</p>
         <p>DOB: {{ user.birthday }}</p>
@@ -22,6 +23,6 @@
 
         </div>
 
-        <button><a href="/edit_profile"> Edit your Profile </a></button>
+        <button><a href="/edit/profile/"> Edit your Profile </a></button>
     
 {% endblock %}

@@ -3,22 +3,16 @@ from .models import *
 from django.contrib import messages
 import re
 import bcrypt
-<<<<<<< HEAD
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
-=======
 import random
 from django.http import JsonResponse
->>>>>>> bc1f3d038998ed1af356d2be65ae9e0c3a7c16ca
 
 # Create your views here.
 def index(request):
     if "user_id" not in request.session:
         return redirect("/login/")
-<<<<<<< HEAD
-=======
 
->>>>>>> bc1f3d038998ed1af356d2be65ae9e0c3a7c16ca
     context = {
         "user" : User.objects.get(id=request.session["user_id"]),
         "all_users" : User.objects.exclude(id=request.session["user_id"]),
@@ -101,10 +95,8 @@ def display_login(request):
 
     return render(request, 'login.html')
 def display_message(request):
-<<<<<<< HEAD
     return render(request, 'message.html')
 
-=======
     if "user_id" not in request.session:
         return redirect("/login/")
 
@@ -113,7 +105,6 @@ def display_message(request):
         "all_users" : User.objects.exclude(id=request.session["user_id"]),
     }
     return render(request, 'message.html',context)
->>>>>>> bc1f3d038998ed1af356d2be65ae9e0c3a7c16ca
 def display_profile(request):
     if "user_id" not in request.session:
         return redirect("/login/")
@@ -140,7 +131,6 @@ def dislike(request):
     return redirect('/1on1/')
     return render(request, 'profile.html')
 
-<<<<<<< HEAD
 def display_edit_profile(request):
     return render(request, 'edit_profile.html')
 
@@ -152,7 +142,7 @@ def process_profile(request):
         uploaded_file_url = fs.url(filename)
     
     quick = request.POST
-    profile = Profile.objects.create(summary = quick['summary'], interests = quick['interests'], goals = quick['goals'])
+    profile = Profile.objects.create(user = User.objects.get(id = request.session["user_id"]), summary = quick['summary'], interests = quick['interests'], goals = quick['goals'])
     request.session['prof_id'] = profile.id
     context ={
          'uploaded_file_url' : uploaded_file_url,
@@ -160,7 +150,6 @@ def process_profile(request):
          'profile_info' : Profile.objects.get(id =  request.session['prof_id']),
     }    
     return  render (request, 'profile.html', context)
-=======
 def display_game(request):
     random_id = random.randint(1,44)
 
@@ -187,4 +176,3 @@ def process_game(request):
 
     return redirect('/game/')
 
->>>>>>> bc1f3d038998ed1af356d2be65ae9e0c3a7c16ca

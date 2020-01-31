@@ -4,23 +4,18 @@
 
 {% block content %}
 {% load static %}
-        <form action="/edit/profile" method ='POST'  enctype="multipart/form-data">
-            {% csrf_token %}
-            <label for=""> Choose your profile picture</label>
-            <input type="file" name="imgfile">
-            <button type="submit">Upload Your Profile Picture</button>
-        </form>
+    <form action="/edit/profile/" method ='POST'  enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for=""> Choose your profile picture</label>
+        <input type="file" name="imgfile">
 
-        <form action="/edit/profile" method="POST">
-            <label for="">Summary:</label>
-            <textarea name="summary" id="" cols="40" rows="20"></textarea>
-            <label for="">Interests: </label>
-            <textarea name="interest" id="" cols="40" rows="20"></textarea>
-            <label for="">Goals</label>
-            <textarea name="goals" id="" cols="40" rows="20"></textarea>
-            <button>Submit</button>
-        </form>
-</body>
-</html>
 
+        <label for="">Summary:</label>
+        <textarea name="summary" id="" cols="40" rows="20"></textarea>
+        <label for="">Interests: </label>
+        <textarea name="interest" id="" cols="40" rows="20"></textarea>
+        <label for="">Goals</label>
+        <textarea name="goals" id="" cols="40" rows="20"></textarea>
+        <button>Submit</button>
+    </form>
 {% endblock %}

@@ -12,17 +12,11 @@ urlpatterns = [
     path('login/', views.display_login),
     path('message/', views.display_message),
     path('profile/', views.display_profile),
-<<<<<<< HEAD
     path('edit/profile/', views.display_edit_profile),
     path('process/profile/', views.process_profile),
-
-]
-
-=======
     path('1on1/', views.display_1on1),
     path('dislike/', views.dislike),
     path('like/', views.like),
     path('game/', views.display_game),
     path('process/game/', views.process_game),
 ]
->>>>>>> bc1f3d038998ed1af356d2be65ae9e0c3a7c16ca

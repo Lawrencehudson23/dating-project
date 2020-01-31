@@ -59,7 +59,6 @@ class Match(models.Model):
     user2 = models.ForeignKey(User, related_name="match2", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
-<<<<<<< HEAD
 #creating model for messaging
 # class Message(models.Model):
 #     sender = models.ForeignKey(User, related_name= 'send', on_delete=models.CASCADE)
@@ -77,7 +76,6 @@ class Profile(models.Model):
     interest = models.TextField(default = 'Nothing to display')
     goals = models.TextField(default = 'Nothing to display')
     updated_at = models.DateTimeField(auto_now_add=True)
-=======
 # class Profile(models.Model):
 #     image = models.ImageField(width_field=200px, height_field=400px)
 #     summary = models.TextField()
@@ -98,4 +96,3 @@ class Game(models.Model):
 
 
 
->>>>>>> bc1f3d038998ed1af356d2be65ae9e0c3a7c16ca
