@@ -61,3 +61,9 @@ class Match(models.Model):
     user1 = models.ForeignKey(User, related_name="match1", on_delete=models.CASCADE)
     user2 = models.ForeignKey(User, related_name="match2", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
+
+class Profile(models.Model):
+    image = models.ImageField(width_field=200px, height_field=400px)
+    summary = models.TextField()
+    interest = models.TextField()
+    goals = models.TextField()

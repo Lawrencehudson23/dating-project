@@ -50,7 +50,7 @@
           </form>
           <ul class="nav justify-content-end">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Lawrence/Picture</a>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{{ user.first_name  }}</a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="#">Profile</a>
                 <a class="dropdown-item" href="#">Likes</a>
@@ -173,18 +173,20 @@
                         <h3>Last added profiles</h3>
                         <h4><a href="#">next </a> | <a href="#">prev</a></h4>
                       </div>
+
+                      
                       <div class="detail_box">
+                        {% for user in all_users reversed %}
                         <div class="column"><span class="photo"><a href="#"><img src='{%static "images/pic_2.gif"%}' alt="" /></a></span>
                           <div class="self_detail">
-                            <p>Name: <span>Minisha</span><br />
-                              Age: <span>22 yrs.</span><br />
-                              Sex: <span>Female</span><br />
-                              Location: <span>Argentina</span><br />
-                              Height: <span>5’8”</span><br />
-                              Bust: <span>36</span><br />
-                              Waist: <span>26</span><br />
-                              Hair: <span>Black</span> 
-                            </p>
+                            <ul>
+                              <li>Name: {{ user.first_name }} </li>
+                              <li>Age: 24</li>
+                              <li>Sex: {{ user.gender }}</li>
+                              <li>Location: {{ user.city }} </li>
+                            </ul>
+                           
+                      {% endfor %}
 
               </div>
             </div>

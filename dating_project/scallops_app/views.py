@@ -6,7 +6,11 @@ import bcrypt
 
 # Create your views here.
 def index(request):
-    return render(request,'base.html')
+    context = {
+        "user" : User.objects.get(id=request.session["user_id"]),
+        "all_users" : User.objects.exclude(id=request.session["user_id"]),
+    }
+    return render(request,'base.html', context)
 def display_about_us(request):
     return render(request,'about_us.html')
 def display_contact_us(request):
@@ -26,7 +30,7 @@ def process_registration(request):
     else:
         password = request.POST["password"]
         pw_hash = bcrypt.hashpw(password.encode(), bcrypt.gensalt()).decode() 
-        user = User.objects.create(first_name=request.POST["first_name"], last_name=request.POST["last_name"], email=request.POST["email"], password=pw_hash)
+        user = User.objects.create(first_name=request.POST["first_name"], last_name=request.POST["last_name"], email=request.POST["email"], password=pw_hash, birthday = request.POST["birthday"], gender=request.POST["gender"], city = request.POST["city"])
 
         request.session['user_id'] = user.id
         request.session['user_first'] = user.first_name
