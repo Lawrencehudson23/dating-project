@@ -3,44 +3,26 @@
 {% block title%}{% endblock %}
 
 {% block content %}
-{% load static %}
-    <h1>User Profile</h1>
-    <img src="{%static 'images/pic_4.gif'%}" alt="User Image">
-    <p>Name</p>
-    <p>Age</p>
-    <p>Hobby</p>
-    <p>Summary</p>
-    <p>Gender</p>
+{% load static %} 
+    <h1>Hello {{ user.first_name }}</h1>
+    <img src="{{ uploaded_file_url }}" alt="">
+        <h2>{{ uploaded_file_url }}</h2>
+        <p>Gender: {{ user.gender }} </p>
+        <p>City: {{ user.city }}</p>
+        <p>DOB: {{ user.birthday }}</p>
+        <p>Summary: {{ profile_info.summary}}</p>
+        <div>
 
-    <h2>User's Likes</h2>
-    <table>
-        <thead>
-            <th>Details</th>      
-        </thead>
-        <tbody>
-            <tr>
-                <td>Username
-                    <a href="/profile/username"><img src="{%static 'images/pic_3.gif'%}" alt="Liked person"></a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        </div>
+        <p>Interests: {{ profile_info.interests}}</p>
+        <div>
 
-    <h2>Lets date</h2>
-    <table>
-        <thead>
-            <th>Details</th>
-            <th>Actions</th>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Username
-                        <a href="/profile/username"><img src="{%static 'images/pic_2.gif'%}" alt="To date person"></a>
-                </td>
-                <td><a href="/message/userid">Message </a></td>
-                <td><a href="/game/userid">Game</a></td>
-            </tr>
-        </tbody>
+        </div>
+        <p>Goals:{{ profile_info.goals }}</p>
+        <div>
 
-    </table>
+        </div>
+
+        <button><a href="/edit/profile/"> Edit your Profile </a></button>
+    
 {% endblock %}

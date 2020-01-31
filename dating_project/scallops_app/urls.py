@@ -11,4 +11,12 @@ urlpatterns = [
     path('login/', views.display_login),
     path('message/', views.display_message),
     path('profile/', views.display_profile),
+    path('game/', views.display_game),
+    path('ajax/game/', views.ajax_game),
+    path('ajax/message/', views.ajax_message),
+    path('1on1/', views.display_1on1),
+    path('dislike/', views.dislike),
+    path('like/', views.like),
+    path('ajax/like/', views.ajax_like),
+
 ]
